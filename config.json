@@ -1,0 +1,5 @@
+{
+	"ngrokAuthKey": "ADD YOUR TOKEN HERE",
+	"ngrokPath" : "ADD THE NGROK BINARY PATH HERE",
+	"chatServerPort" : 8081
+}
