@@ -4,6 +4,7 @@ class Player:
 		if sys.platform.startswith('linux'):
 			args.append('--no-xlib')
 		self.instance = vlc.Instance(args)
+		self.instance.log_unset()
 		self.player=self.instance.media_player_new()
 		self.media=None
 

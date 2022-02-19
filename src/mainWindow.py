@@ -5,7 +5,7 @@ from .PyQtFrames.videoFrame import VideoFrame
 from pyngrok import ngrok,conf
 from .Video.player import Player
 from .Chat.server import ChatServer
-import sys, os, json, base64, threading, time, random, string, pyperclip
+import sys, os, json, base64, threading, time, random, string, pyperclip, urllib
 
 DEBUG = False
 
@@ -126,7 +126,7 @@ class MainClass(QtWidgets.QMainWindow):
 	def createHost(self):
 		self.cleanUp()
 		fileName = QtWidgets.QFileDialog.getOpenFileName(self, 'Choose video file which you wanna stream.', os.path.expanduser('~'))
-		if not fileName:
+		if not fileName[0]:
 			return
 		filePath = fileName[0]
 		fileFolder = '/'.join(filePath.split('/')[:-1])
@@ -145,7 +145,7 @@ class MainClass(QtWidgets.QMainWindow):
 		windowName = self.player.openFileOrUrl(filePath)
 		self.setWindowTitle(windowName)
 		self.player.setWindowToPyQT(self.videoFrame.winId())
-		self.finalString = ';;;'.join([self.chatTunnel.public_url, self.videoTunnel.public_url, fileName, self._getConcatUserPassword()])
+		self.finalString = ';;;'.join([self.chatTunnel.public_url, self.videoTunnel.public_url, urllib.parse.quote(fileName), self._getConcatUserPassword()])
 		self.finalString = base64.b64encode(self.finalString.encode('ascii')).decode('ascii')
 		msgBox = QtWidgets.QMessageBox(QtWidgets.QMessageBox.Icon.Information , 'Copy to ClipBoard', 'Click on Yes to copy the String to ClipBoard you can then send it to your friend to add them in your session.')
 		msgBox.setStandardButtons(QtWidgets.QMessageBox.Yes | QtWidgets.QMessageBox.No)
@@ -182,6 +182,8 @@ class MainClass(QtWidgets.QMainWindow):
 		self.toolBar.positionSlider.setEnabled(False)
 		self.toolBar.volumeSlider.setEnabled(True)
 		self.isHost = False
+		self.player.playPause()
+		self.player.playPause()
 
 	def copyToClipBoard(self,button):
 		if button.text=='No':
