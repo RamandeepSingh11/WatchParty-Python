@@ -20,3 +20,6 @@ After Selecting Host a Video you should be able to pick up a video file afterwar
 
 ### Selecting Connect to Host
 After Selecting Connect to Host a prompt should come up which will ask for a string. You have to put the string that is shared by your friend in that prompt.
+
+### Example Result
+<img src="https://github.com/GamesBond008/WatchParty-Python/blob/master/Example/Sample.gif">
