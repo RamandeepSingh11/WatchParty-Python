@@ -22,4 +22,5 @@ After Selecting Host a Video you should be able to pick up a video file afterwar
 After Selecting Connect to Host a prompt should come up which will ask for a string. You have to put the string that is shared by your friend in that prompt.
 
 ### Example Result
+Disclaimer the given example is recorded in 5fps and hence the stutter.
 <img src="https://github.com/GamesBond008/WatchParty-Python/blob/master/Example/Sample.gif">
